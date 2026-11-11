@@ -1,10 +1,10 @@
 # NYC Taxi Data Analysis & Distributed Computing
 
-A PySpark analysis project using NYC Taxi trip records. The project focuses on working with many Parquet files, normalizing inconsistent schemas, measuring distributed execution, and producing tipping summaries by trip distance and duration.
+A large-scale PySpark analysis project using millions of NYC Taxi trip records distributed across 89 Parquet files. The project focuses on schema normalization, distributed execution measurement, and tip analyses by trip distance and duration.
 
 ## What this project demonstrates
 
-- Processed a dataset spanning **89 NYC Taxi files** with PySpark.
+- Processed **millions of trip records** across **89 large NYC Taxi Parquet files** with PySpark.
 - Normalized conflicting numeric Parquet schemas before aggregation.
 - Compared execution across **1-node, 2-worker, and 4-worker** configurations on Google Cloud Dataproc.
 - Exported tip-by-distance and tip-by-duration summaries to Google Cloud Storage.
@@ -32,6 +32,3 @@ spark-submit src/pyspark_aggregate.py \
 spark-submit src/phase4_analysis.py \
   --input 'gs://YOUR_BUCKET/taxi/*.parquet' \
   --output 'gs://YOUR_BUCKET/results/phase4'
-```
-
-For a local run, replace the `gs://` paths with a path to local Parquet files. Cloud credentials and project-specific bucket names are intentionally not committed.
